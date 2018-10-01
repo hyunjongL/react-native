@@ -59,9 +59,9 @@ class Linking extends NativeEventEmitter {
   openURL(url: string): Promise<any> {
     // Android Intent requires protocols http and https to be in lowercase.
     // https:// and http:// works, but Https:// and Http:// doesn't.
-    if (url.toLowerCase().startsWith('https://')) {
+    if (url.toLowerCase().indexOf('https://') === 0) {
       url = url.replace(url.substr(0, 8), 'https://');
-    } else if (url.toLowerCase().startsWith('http://')) {
+    } else if (url.toLowerCase().indexOf('http://') === 0) {
       url = url.replace(url.substr(0, 7), 'http://');
     }
     this._validateURL(url);
